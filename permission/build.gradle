@@ -5,13 +5,13 @@ ext {
     bintrayName = 'permission'
 
     publishedGroupId = 'com.noisyui'
-    libraryName = 'permissionProxy'
-    artifact = 'permission'
+    libraryName = 'permission-proxy'
+    artifact = 'permission-proxy'
 
     libraryDescription = 'Simplify the process of requesting runtime permission'
 
-    siteUrl = 'https://github.com/nuuneoi/FBLikeAndroid'
-    gitUrl = 'https://github.com/nuuneoi/FBLikeAndroid.git'
+    siteUrl = 'https://github.com/wxf04125/PermissionTest'
+    gitUrl = 'https://github.com/wxf04125/PermissionTest.git'
 
     libraryVersion = '1.0.0'
 
