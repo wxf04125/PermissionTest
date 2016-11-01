@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 
 ext {
     bintrayRepo = 'maven'
-    bintrayName = 'permission'
+    bintrayName = 'permission-proxy'
 
     publishedGroupId = 'com.noisyui'
     libraryName = 'permission-proxy'
@@ -54,3 +54,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:design:25.0.0'
 }
+
+apply from: 'install.gradle'
+apply from: 'bintray.gradle'
