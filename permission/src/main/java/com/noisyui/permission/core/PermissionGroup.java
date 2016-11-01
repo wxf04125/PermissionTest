@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * isAllGranted --> shouldShowRationale --> showRationale --> requestPermissions --> verify
+ * isAllGranted -- shouldShowRationale -- showRationale -- requestPermissions -- verify
  */
 public class PermissionGroup implements PermissionGrantCallback {
 
@@ -39,7 +39,7 @@ public class PermissionGroup implements PermissionGrantCallback {
     }
 
     /**
-     * 保证requestCode的值在0-255之间
+     * make sure requestCode in [0, 255]
      */
     private void refreshRequestCode() {
         if (sBaseCode > 0xff) {
@@ -55,24 +55,17 @@ public class PermissionGroup implements PermissionGrantCallback {
         if (isAllGranted(activity)) {
             onChecked();
         } else if (shouldShowRationale(activity)) {
-            // 重写该方法时，在适当时候调用doRequest方法，进行权限请求，否则永远不会请求
             showRationale(activity);
         } else {
             requestPermissions();
         }
     }
 
-    /**
-     * 所需要的权限是否都授权了
-     */
     public boolean isAllGranted(Context context) {
         mUnGranted = getUnGranted(context, getPermissions());
         return mUnGranted.length == 0;
     }
 
-    /**
-     * 获取未授权的权限
-     */
     private String[] getUnGranted(Context context, String[] permissions) {
         List<String> unGranted = new ArrayList<>();
         if (null != permissions && permissions.length > 0) {
@@ -93,16 +86,10 @@ public class PermissionGroup implements PermissionGrantCallback {
         return mPermissions;
     }
 
-    /**
-     * 处理app之前已经获得授权的情况,默认按照授权成功来处理
-     */
     private void onChecked() {
         onGranted();
     }
 
-    /**
-     * 是否需要显示原因，方便用户理解为什么需要这些权限
-     */
     private boolean shouldShowRationale(Activity activity) {
         for (String permission : mUnGranted) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(activity, permission)) {
@@ -120,9 +107,6 @@ public class PermissionGroup implements PermissionGrantCallback {
         }
     }
 
-    /**
-     * 请求权限
-     */
     public void requestPermissions() {
         mPermissionProxy.requestPermissions(this);
     }
@@ -167,9 +151,6 @@ public class PermissionGroup implements PermissionGrantCallback {
 
     }
 
-    /**
-     * 处理用户拒绝授权的情况,默认不处理
-     */
     @Override
     public void onDenied() {
 
