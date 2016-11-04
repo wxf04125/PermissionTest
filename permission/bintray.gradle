@@ -40,6 +40,7 @@ bintray {
         repo = bintrayRepo
         name = bintrayName
         desc = libraryDescription
+        userOrg = 'noisyui'
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = allLicenses
